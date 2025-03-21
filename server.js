@@ -32,11 +32,25 @@ mongoose
 
 const app = express();
 const PORT = process.env.PORT || 3000;
+// Define allowed origins
+const allowedOrigins = [
+  process.env.CLIENT_URL || "https://client-jla8.onrender.com",
+  "https://www.sudohackers.shop",
+  "https://sudohackers.shop"
+];
 
 // CORS Configuration
 app.use(
   cors({
-    origin: process.env.CLIENT_URL || "https://client-jla8.onrender.com",
+    origin: (origin, callback) => {
+      // allow requests with no origin (like mobile apps or curl requests)
+      if (!origin) return callback(null, true);
+      if (allowedOrigins.indexOf(origin) !== -1) {
+        return callback(null, true);
+      } else {
+        return callback(new Error("Not allowed by CORS"));
+      }
+    },
     methods: ["GET", "POST", "DELETE", "PUT"],
     allowedHeaders: [
       "Content-Type",
