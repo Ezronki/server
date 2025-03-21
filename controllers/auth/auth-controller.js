@@ -67,8 +67,11 @@ const loginUser = async (req, res) => {
       "CLIENT_SECRET_KEY",
       { expiresIn: "60m" }
     );
-
-    res.cookie("token", token, { httpOnly: true, secure: false }).json({
+    res.cookie("token", token, {
+      httpOnly: true,
+      secure: true,      // Only send over HTTPS
+      sameSite: "None",  // Allow cross-site requests (needed for some deployments)
+    }).json({
       success: true,
       message: "Logged in successfully",
       user: {
