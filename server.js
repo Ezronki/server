@@ -36,7 +36,8 @@ const PORT = process.env.PORT || 3000;
 const allowedOrigins = [
   process.env.CLIENT_URL || "https://client-jla8.onrender.com",
   "https://www.sudohackers.shop",
-  "https://sudohackers.shop"
+  "https://sudohackers.shop",
+  "sudohackers.shop"
 ];
 
 // CORS Configuration
