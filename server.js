@@ -34,7 +34,7 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 // Define allowed origins
 const allowedOrigins = [
-  process.env.CLIENT_URL || "https://client-jla8.onrender.com",
+  process.env.CLIENT_URL || "https://client-21tj.onrender.com",
   "https://www.sudohackers.shop",
   "https://sudohackers.shop",
   "sudohackers.shop"
